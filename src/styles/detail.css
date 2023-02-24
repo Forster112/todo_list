@@ -139,6 +139,9 @@
 }
 
 @media only screen and (max-width: 720px) {
+  .tasks--container{
+    padding: 0;
+  }
 
   .task--title{
     font-size: 20px;
@@ -180,13 +183,14 @@
 
 @media only screen and (max-width: 450px){
   .add--task{
-    width: 70%;
+    width: 78%;
   }
 }
 
 @media only screen and (max-width: 400px){
   .add--task{
-    width: 65%;
+    width: 80%;
+    margin-left: 0;
   }
 
   .add--task--input{
