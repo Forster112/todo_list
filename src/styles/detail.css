@@ -1,0 +1,196 @@
+
+.task--title {
+  font-size: 25px;
+}
+
+.task--title i {
+  margin-right: 0.5rem;
+}
+
+.tasks--container {
+  height: 65%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 2.5rem 0;
+  padding: 0 1rem;
+}
+
+.tasks--1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e3f6f527;
+  border-radius: 10px;
+  padding: 10px 30px;
+  gap: 1rem;
+  margin-bottom: 0.7rem;
+}
+
+.tasks--1:hover {
+  background: #e3f6f54e;
+}
+
+.to__important {
+  width: 15px;
+  height: 15px;
+}
+
+.to__important i{
+  font-size: 1.2rem;
+  color: #F68084;
+}
+
+
+.task p {
+  font-size: 14px;
+}
+
+.task--detail {
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.time{
+  color: #e3f6f555;
+}
+
+.tasks-done-wrap .task--detail{
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.tasks-done-wrap .time{
+  color: rgba(105, 0, 0, 0.778);
+}
+
+.separator{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 0.5rem;
+  height: 2rem;
+  color: #ba0b57;
+  margin-bottom: 0.5rem;
+}
+
+.add--task{
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  background: #e3f6f527;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 87%;
+  margin-left: 1rem;
+  color: #020c16a0;
+}
+
+.add--task i{
+  margin-right: 20px;
+  font-size: 1.3rem;
+}
+
+.add--task--input{
+  height: 25px;
+  width: 500px;
+  border: none;
+  background: #e3f6f500;
+  color: #eee0e0;
+  font-size: 20px;
+}
+
+.add--task--input:focus{
+  outline: none;
+}
+
+.newtask--date{
+  position: absolute;
+  right: 20px;
+  height: 25px;
+  background: #e3f6f500;
+  border: none;
+  color: #e2eeee9c;
+  font-size: 15px;
+}
+
+.newtask--date:focus{
+  outline: none;
+}
+
+@media only screen and (max-width: 1100px){
+  .add--task{
+    width: 83%;
+  }
+
+  .add--task--input{
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 922px) {
+  .add--task{
+    width: 80%;
+  }
+
+}
+
+@media only screen and (max-width: 720px) {
+
+  .task--title{
+    font-size: 20px;
+  }
+
+  .add--task{
+    width: 83%;
+    bottom: 65px;
+  }
+
+  .add--task i{
+    margin-right: 10px;
+  }
+
+  .add--task--input{
+    width: 45%;
+    height: 20px;
+    font-size: 16px;
+  }
+
+  .newtask--date{
+    height: 20px;
+    font-size: 10px;
+  }
+}
+
+
+@media only screen and (max-width: 640px){
+  .add--task{
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 530px){
+  .add--task{
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 450px){
+  .add--task{
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 400px){
+  .add--task{
+    width: 65%;
+  }
+
+  .add--task--input{
+    width: 60px;
+    font-size: 12px;
+  }
+}

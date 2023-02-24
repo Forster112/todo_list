@@ -1,0 +1,185 @@
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user .user--initials {
+  align-items: center;
+  justify-content: center;
+  background: #dc5084;
+  border-radius: 50%;
+  padding: 0.8rem;
+  margin-right: 15px;
+}
+
+.user .user--initials p {
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.username--email p {
+  font-size: 15px;
+}
+
+.username--email .username {
+  font-weight: 600;
+}
+
+.line {
+  height: 1px;
+  margin: 1rem 0;
+  background-color: #020c16;
+}
+
+.list--type div {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  height: 50px;
+  padding-left: 0.5rem;
+  transition: 0.1s;
+}
+
+.list--type div i {
+  margin-right: 1.5rem;
+}
+
+.list--type div:hover {
+  background: #e3f6f54e;
+  border-radius: 10px;
+  color: #020c16;
+  transform: scale(1.1);
+}
+
+.added--task {
+  height: 20%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 3rem;
+}
+
+.added--task div {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  height: 50px;
+  padding-left: 0.5rem;
+  transition: 0.1s;
+  width: 95%;
+}
+
+.added--task div i {
+  margin-right: 1.5rem;
+}
+
+.added--task div:hover {
+  background: #e3f6f54e;
+  border-radius: 10px;
+  color: #01070d;
+  transform: scale(1.02);
+}
+
+.new-n-settings {
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+  width: 80%;
+}
+
+.new--list {
+  display: flex;
+  height: 45px;
+  width: 100%;
+  align-items: center;
+  padding: 0 0.5rem;
+  background: #e3f6f54e;
+  border-radius: 10px;
+  color: #020c16a0;
+}
+
+.new--list i {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.new-list-input {
+  width: 70%;
+  height: 25px;
+  border: none;
+  background: #e3f6f500;
+  font-size: 20px;
+  color: #eee0e0;
+  padding: 0.5rem;
+}
+
+.new-list-input:focus {
+  outline: none;
+}
+
+.new-list-input::placeholder {
+  color: #124d8887;
+}
+
+.settings {
+  font-size: 1.5rem;
+}
+
+.settings:hover {
+  color: #020c16;
+}
+
+@media only screen and (max-width: 1100px) {
+  .username--email p {
+    font-size: 9.5px;
+  }
+
+  .user .user--initials {
+    padding: 0.6rem;
+  }
+
+  .user .user--initials p {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .action__container {
+    background: #193756;
+    width: 60%;
+    border-radius: 10px;
+    transition: 0.3s;
+    margin-left: 30px;
+    padding: 25px;
+  }
+
+  .added--task {
+    display: none;
+  }
+
+  .new-n-settings {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 430px){
+  .username--email p {
+    font-size:7.8px;
+  }
+}
+
+@media only screen and (max-width: 375px){
+  .list--type div{
+    font-size: 12px;
+  }
+
+  .list--type div i{
+    margin-right: .8rem;
+  }
+
+  .user .user--initials{
+    margin-right: 3px;
+  }
+}

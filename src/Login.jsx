@@ -1,40 +1,48 @@
 import React from "react";
 
+import './styles/login.css'
+
 const Login = () => {
   return (
-    <div class="signup hidden">
-      <form name="form" action="#">
-        <p class="sign">Login</p>
-        <p class="p2">
-          Email
-          <input
-            type="email"
-            class="enter email--input"
-            required
-          />
-        </p>
-        <p class="p2">
-          First Name
-          <input
-            type="text"
-            class="enter first--name"
-            required
-          />
-        </p>
-        <p class="p2">
-          Last Name
-          <input
-            type="text"
-            class="enter last--name"
-            required
-          />
-        </p>
-        <br />
-        <button type="submit" class="submitForm">
-          Login
-        </button>
-      </form>
-    </div>
+    <>
+      <div class="signup">
+        <form name="form" action="#">
+          <p class="login-text">Login</p>
+          <div class="user--data">
+            Email:
+            <input
+              type="email"
+              class="input email--input"
+              required
+            />
+          </div>
+          <div class="user--data">
+            First Name:
+            <input
+              type="text"
+              class="input first--name"
+              required
+            />
+          </div>
+          <div class="user--data">
+            Last Name:
+            <input
+              type="text"
+              class="input last--name"
+              required
+            />
+          </div>
+          <br />
+          <button
+            type="submit"
+            class="submitForm"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+      <div class="overlay"></div>
+    </>
   );
 };
 
