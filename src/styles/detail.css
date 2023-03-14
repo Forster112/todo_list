@@ -1,4 +1,3 @@
-
 .task--title {
   font-size: 25px;
 }
@@ -35,11 +34,39 @@
   height: 15px;
 }
 
-.to__important i{
+.to__important i {
   font-size: 1.2rem;
-  color: #F68084;
+  color: #f68084;
+  cursor: pointer;
 }
 
+.to__important .prompt{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: absolute;
+  right: 45px;
+  margin-top: 0px;
+  font-size: 14px;
+  color: white;
+  background: #dc5084;
+  z-index: 20;
+  padding: 0.4rem;
+}
+
+.to__important .prompt .select__btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.to__important .prompt .select__btn button{
+  padding: 0.2rem;
+  border: none;
+  background: #022f5c;
+  color: wheat;
+  cursor: pointer;
+}
 
 .task p {
   font-size: 14px;
@@ -51,31 +78,15 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.time{
+.time {
   color: #e3f6f555;
 }
 
-.tasks-done-wrap .task--detail{
-  text-decoration: line-through;
-  font-style: italic;
+.time i{
+  margin-right: 0.4rem;
 }
 
-.tasks-done-wrap .time{
-  color: rgba(105, 0, 0, 0.778);
-}
-
-.separator{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  padding: 0.5rem;
-  height: 2rem;
-  color: #ba0b57;
-  margin-bottom: 0.5rem;
-}
-
-.add--task{
+.add--task {
   position: absolute;
   bottom: 40px;
   display: flex;
@@ -83,117 +94,142 @@
   font-size: 15px;
   background: #e3f6f527;
   border-radius: 10px;
-  padding: 1rem;
-  width: 87%;
+  padding: 0 0 0 1rem;
+  height: 55px;
+  width: 57%;
   margin-left: 1rem;
   color: #020c16a0;
 }
 
-.add--task i{
+.add--task i {
   margin-right: 20px;
   font-size: 1.3rem;
 }
 
-.add--task--input{
+.add--task--input {
   height: 25px;
-  width: 500px;
+  width: 200px;
   border: none;
   background: #e3f6f500;
   color: #eee0e0;
   font-size: 20px;
 }
 
-.add--task--input:focus{
+.add--task--input:focus {
   outline: none;
 }
 
-.newtask--date{
+.newtask--date {
   position: absolute;
-  right: 20px;
   height: 25px;
   background: #e3f6f500;
   border: none;
-  color: #e2eeee9c;
+  color: #da6569;
   font-size: 15px;
 }
 
-.newtask--date:focus{
+.newtask--date:focus {
   outline: none;
 }
 
-@media only screen and (max-width: 1100px){
-  .add--task{
+.add__task__btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 55px;
+  width: 15%;
+  border-radius: 10px;
+  border: none;
+  background: #124d8887;
+  color: #eee0e0;
+  box-shadow: -3px 0px #575757;
+}
+
+.add__task__btn:hover {
+  background: #da6569;
+  color: #042749;
+}
+
+@media only screen and (max-width: 1100px) {
+  .add--task {
     width: 83%;
   }
 
-  .add--task--input{
+  .add--task--input {
     width: 200px;
   }
 }
 
 @media only screen and (max-width: 922px) {
-  .add--task{
+  .add--task {
     width: 80%;
   }
 
+  .add--task--input{
+    width: 120px;
+  }
 }
 
 @media only screen and (max-width: 720px) {
-  .tasks--container{
+  .tasks--container {
     padding: 0;
   }
 
-  .task--title{
+  .task--title {
     font-size: 20px;
   }
 
-  .add--task{
+  .add--task {
     width: 83%;
     bottom: 65px;
+    margin-left: 0;
   }
 
-  .add--task i{
+  .add--task i {
     margin-right: 10px;
   }
 
-  .add--task--input{
+  .add--task--input {
     width: 45%;
     height: 20px;
     font-size: 16px;
   }
 
-  .newtask--date{
+  .newtask--date {
     height: 20px;
     font-size: 10px;
   }
 }
 
-
-@media only screen and (max-width: 640px){
-  .add--task{
+@media only screen and (max-width: 640px) {
+  /* .add--task {
     width: 80%;
-  }
+  } */
 }
 
-@media only screen and (max-width: 530px){
-  .add--task{
+@media only screen and (max-width: 530px) {
+  /* .add--task {
     width: 75%;
-  }
+  } */
 }
 
-@media only screen and (max-width: 450px){
-  .add--task{
+@media only screen and (max-width: 450px) {
+  .tasks--container {
+    height: 60%;
+  }
+
+  /* .add--task {
     width: 78%;
-  }
+  } */
 }
 
-@media only screen and (max-width: 400px){
-  .add--task{
-    width: 80%;
+@media only screen and (max-width: 400px) {
+  .add--task {
+    /* width: 80%; */
     margin-left: 0;
   }
 
-  .add--task--input{
+  .add--task--input {
     width: 60px;
     font-size: 12px;
   }

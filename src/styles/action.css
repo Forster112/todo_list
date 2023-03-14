@@ -17,12 +17,13 @@
   font-size: 18px;
 }
 
-.username--email p {
+.username--nickname p {
   font-size: 15px;
 }
 
-.username--email .username {
+.username--nickname .nickname {
   font-weight: 600;
+  margin-left: 0;
 }
 
 .line {
@@ -31,7 +32,7 @@
   background-color: #020c16;
 }
 
-.list--type div {
+.list--type .todo--type {
   display: flex;
   align-items: center;
   font-size: 18px;
@@ -40,15 +41,23 @@
   transition: 0.1s;
 }
 
-.list--type div i {
+.list--type .todo--type i {
   margin-right: 1.5rem;
 }
 
-.list--type div:hover {
+.list--type .todo--type:hover {
   background: #e3f6f54e;
   border-radius: 10px;
   color: #020c16;
   transform: scale(1.1);
+}
+
+.list--type .todo--type .del__btn {
+  display: none;
+}
+
+.list--type .todo--type .prompt{
+  display: none;
 }
 
 .added--task {
@@ -58,25 +67,60 @@
   margin-bottom: 3rem;
 }
 
-.added--task div {
+.added--task .task--added {
   display: flex;
   align-items: center;
   font-size: 18px;
   height: 50px;
-  padding-left: 0.5rem;
+  padding: 0 0.5rem;
   transition: 0.1s;
-  width: 95%;
+  width: 100%;
 }
 
-.added--task div i {
+.added--task .task--added i {
   margin-right: 1.5rem;
 }
 
-.added--task div:hover {
+.added--task .task--added:hover {
   background: #e3f6f54e;
   border-radius: 10px;
   color: #01070d;
-  transform: scale(1.02);
+}
+
+.added--task .task--added .del__btn {
+  position: absolute;
+  cursor: pointer;
+  color: #f68084;
+  font-size: 1.2rem;
+  right: 20px;
+}
+
+.added--task .task--added .prompt{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: absolute;
+  right: 20px;
+  margin-top: 35px;
+  font-size: 14px;
+  color: white;
+  background: #dc5084;
+  z-index: 20;
+  padding: 0.4rem;
+}
+
+.added--task .task--added .prompt .select__btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.added--task .task--added .prompt .select__btn button{
+  padding: 0.2rem;
+  border: none;
+  background: #022f5c;
+  color: wheat;
+  cursor: pointer;
 }
 
 .new-n-settings {
@@ -94,7 +138,7 @@
   height: 45px;
   width: 100%;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0 0 0 0.5rem;
   background: #e3f6f54e;
   border-radius: 10px;
   color: #020c16a0;
@@ -123,12 +167,19 @@
   color: #124d8887;
 }
 
-.settings {
-  font-size: 1.5rem;
+.create__list {
+  width: 30%;
+  height: 45px;
+  background: #124d8887;
+  border: none;
+  color: #eee0e0;
+  border-radius: 10px;
+  box-shadow: -3px 0px gray;
 }
 
-.settings:hover {
-  color: #020c16;
+.create__list:hover {
+  background: #da6569;
+  color: #07325d;
 }
 
 @media only screen and (max-width: 1100px) {
@@ -145,14 +196,35 @@
   }
 }
 
+@media only screen and (max-width: 770px) {
+  .new--list i {
+    margin-right: 0;
+  }
+}
+
 @media only screen and (max-width: 720px) {
+  @keyframes flowIn {
+    0% {
+      transform: translateX(-13%);
+      transition: all 0.4s ease-in-out;
+    }
+
+    100% {
+      transform: translateX(0);
+      transition: all 0.4s ease-in-out;
+    }
+  }
+
   .action__container {
     background: #193756;
     width: 60%;
     border-radius: 10px;
     transition: 0.3s;
-    margin-left: 30px;
+    margin-left: 21px;
     padding: 25px;
+    animation-duration: .9s;
+    animation-name: flowIn;
+    animation-iteration-count: 1;
   }
 
   .added--task {
@@ -164,22 +236,22 @@
   }
 }
 
-@media only screen and (max-width: 430px){
+@media only screen and (max-width: 430px) {
   .username--email p {
-    font-size:7.8px;
+    font-size: 7.8px;
   }
 }
 
-@media only screen and (max-width: 375px){
-  .list--type div{
+@media only screen and (max-width: 375px) {
+  .list--type div {
     font-size: 12px;
   }
 
-  .list--type div i{
-    margin-right: .8rem;
+  .list--type div i {
+    margin-right: 0.8rem;
   }
 
-  .user .user--initials{
+  .user .user--initials {
     margin-right: 3px;
   }
 }
