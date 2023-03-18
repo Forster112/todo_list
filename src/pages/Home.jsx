@@ -1,4 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+} from "react";
 
 import "../App.css";
 import List from "../components/List";
@@ -11,7 +15,7 @@ import Login from "../components/Login";
 import Tasks from "../task-data/taskData";
 
 const Home = () => {
-  // my use states
+  // states
   const [message, setMessage] = useState("");
 
   const [newList, setNewList] = useState(Tasks);
@@ -21,7 +25,7 @@ const Home = () => {
   const [user, setUser] = useState({});
   const [initial, setInitial] = useState("");
 
-  // my use refs
+  // refs
   const showAction = useRef("");
   const removeFocus = useRef(null);
 
@@ -41,6 +45,7 @@ const Home = () => {
   const cur = new Date();
   const scur = cur.toISOString().substring(0, 10);
 
+  console.log(Tasks);
   // toggle action section for mobile view
   const toggleAction = () => {
     showAction.current.classList.toggle(
@@ -67,7 +72,6 @@ const Home = () => {
       ) {
         item.display = "yes";
       }
-
       return item;
     });
   };
@@ -114,6 +118,47 @@ const Home = () => {
     input.current.value = "";
   };
 
+  // Add List to Local Storage
+  useEffect(() => {
+    localStorage.setItem(
+      "lists",
+      JSON.stringify(newList)
+    );
+  }, [newList]);
+
+  // Retrieve List from local storage
+  useEffect(() => {
+    const todoLists = JSON.parse(
+      localStorage.getItem("lists")
+    );
+    if (todoLists) {
+      setNewList(todoLists.map(item => {
+        if (item.name === "My Day List") {
+          item.icon = <i class="ri-sun-line"></i>;
+        } else if (
+          item.name === "Important List"
+        ) {
+          item.icon = (
+            <i class="ri-star-line"></i>
+          );
+        } else if (item.name === "Long Plan") {
+          item.icon = (
+            <i class="ri-calendar-2-line"></i>
+          );
+        } else if (item.name === "Tasks") {
+          item.icon = (
+            <i class="ri-list-check"></i>
+          );
+        } else {
+          item.icon = (
+            <i class="ri-menu-add-fill"></i>
+          );
+        }
+        return item
+      }));
+    }
+  }, []);
+
   // set date
   const stDate = (userDate) => {
     const today = new Date()
@@ -126,7 +171,7 @@ const Home = () => {
     const stringTomorow = new Date(tomorrow)
       .toISOString()
       .substring(0, 10);
-    
+
     let yesterday = new Date().setDate(
       new Date(today).getDate() - 1
     );
@@ -139,7 +184,7 @@ const Home = () => {
     } else if (userDate === stringTomorow) {
       return "Tomorrow";
     } else if (userDate === stringYesterday) {
-      return "Yesterday"
+      return "Yesterday";
     } else {
       return userDate;
     }
@@ -246,7 +291,7 @@ const Home = () => {
               {defaultList.map((item) => (
                 <List
                   key={item.id}
-                  class="todo--type"
+                  clas="todo--type"
                   item={item}
                   newList={newList}
                   func1={activeList}
@@ -261,7 +306,7 @@ const Home = () => {
               {addedList.map((item) => (
                 <List
                   key={item.id}
-                  class="task--added"
+                  clas="task--added"
                   item={item}
                   newList={newList}
                   func1={activeList}

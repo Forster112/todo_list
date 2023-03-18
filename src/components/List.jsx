@@ -7,7 +7,7 @@ const List = (props) => {
 
   return (
     <div
-      className={props.class}
+      className={props.clas}
       key={props.item.id}
       a-key={props.item.id}
       onClick={(e) => {
