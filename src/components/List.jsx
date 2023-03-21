@@ -5,17 +5,34 @@ import "../styles/action.css";
 const List = (props) => {
   const [view, setView] = useState(false);
 
+  const addListIcon = function (item) {
+    if (item.name === "My Day List") {
+      return <i class="ri-sun-line"></i>;
+    } else if (item.name === "Important List") {
+      return <i class="ri-star-line"></i>;
+    } else if (item.name === "Long Plan") {
+      return <i class="ri-calendar-2-line"></i>;
+    } else if (item.name === "Tasks") {
+      return <i class="ri-list-check"></i>;
+    } else {
+      return <i class="ri-menu-add-fill"></i>;
+    }
+  };
+
   return (
     <div
       className={props.clas}
       key={props.item.id}
       a-key={props.item.id}
       onClick={(e) => {
-        props.func1(e, props.newList);
-        props.func2(props.newList);
+        props.activeListFunction(
+          e,
+          props.newList
+        );
+        props.assignTaskFunction(props.newList);
       }}
     >
-      {props.item.icon} {props.item.name}
+      {addListIcon(props.item)} {props.item.name}
       <i
         class="ri-delete-bin-6-line del__btn"
         onClick={() => {
@@ -31,7 +48,10 @@ const List = (props) => {
                 props.item
               )}
               onClick={(e) =>
-                props.func3(e, props.newList)
+                props.deleteListFunction(
+                  e,
+                  props.newList
+                )
               }
             >
               Yes

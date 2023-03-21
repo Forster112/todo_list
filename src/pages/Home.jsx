@@ -16,11 +16,11 @@ import Tasks from "../task-data/taskData";
 
 const Home = () => {
   // states
-  const [message, setMessage] = useState("");
+  const [userInputName, setUserInputName] = useState("");
 
   const [newList, setNewList] = useState(Tasks);
 
-  const [value, setValue] = useState(newList[0]);
+  const [liveList, setLiveList] = useState(newList[0]);
 
   const [user, setUser] = useState({});
   const [initial, setInitial] = useState("");
@@ -42,10 +42,9 @@ const Home = () => {
   const defaultList = newList.slice(0, 4);
   const addedList = newList.slice(4);
 
-  const cur = new Date();
-  const scur = cur.toISOString().substring(0, 10);
+  const newDate = new Date();
+  const newDateStr = newDate.toISOString().substring(0, 10);
 
-  console.log(Tasks);
   // toggle action section for mobile view
   const toggleAction = () => {
     showAction.current.classList.toggle(
@@ -56,7 +55,7 @@ const Home = () => {
   // set current task to be displayed
   const assignTask = (newlist) => {
     newlist.map((item) => {
-      if (item.display === "yes") setValue(item);
+      if (item.display === "yes") setLiveList(item);
       return item;
     });
   };
@@ -80,17 +79,16 @@ const Home = () => {
   const createNewList = (
     e,
     lists,
-    message,
+    userInputName,
     ref
   ) => {
     e.preventDefault();
-    if (message !== "") {
+    if (userInputName !== "") {
       setNewList([
         ...lists,
         {
-          name: message,
+          name: userInputName,
           id: lists.length,
-          icon: <i class="ri-menu-add-fill"></i>,
           detail: [],
         },
       ]);
@@ -118,6 +116,43 @@ const Home = () => {
     input.current.value = "";
   };
 
+  // delete user created list type
+  const deleteList = (e, list) => {
+    const key = Number(
+      e.target.getAttribute("b-key")
+    );
+    setNewList(
+      list.filter((item) => {
+        return list.indexOf(item) !== key;
+      })
+    );
+  };
+
+  // delete task from list
+  const deleteTask = (e, alist) => {
+    const key = Number(
+      e.target.getAttribute("b-key")
+    );
+
+    setNewList(
+      alist.map((item) => {
+        if (item?.display === "yes") {
+          item.detail.splice(key, 1);
+        }
+        return item;
+      })
+    );
+  };
+
+  // Retrieve List from local storage
+  useEffect(() => {
+    const todoLists = JSON.parse(
+      localStorage.getItem("lists")
+    );
+    if (!todoLists) return
+    setNewList(todoLists)
+  }, []);
+
   // Add List to Local Storage
   useEffect(() => {
     localStorage.setItem(
@@ -126,41 +161,8 @@ const Home = () => {
     );
   }, [newList]);
 
-  // Retrieve List from local storage
-  useEffect(() => {
-    const todoLists = JSON.parse(
-      localStorage.getItem("lists")
-    );
-    if (todoLists) {
-      setNewList(todoLists.map(item => {
-        if (item.name === "My Day List") {
-          item.icon = <i class="ri-sun-line"></i>;
-        } else if (
-          item.name === "Important List"
-        ) {
-          item.icon = (
-            <i class="ri-star-line"></i>
-          );
-        } else if (item.name === "Long Plan") {
-          item.icon = (
-            <i class="ri-calendar-2-line"></i>
-          );
-        } else if (item.name === "Tasks") {
-          item.icon = (
-            <i class="ri-list-check"></i>
-          );
-        } else {
-          item.icon = (
-            <i class="ri-menu-add-fill"></i>
-          );
-        }
-        return item
-      }));
-    }
-  }, []);
-
   // set date
-  const stDate = (userDate) => {
+  const setDisplayDate = (userDate) => {
     const today = new Date()
       .toISOString()
       .substring(0, 10);
@@ -227,30 +229,18 @@ const Home = () => {
     }
   };
 
-  const deleteList = (e, list) => {
-    const key = Number(
-      e.target.getAttribute("b-key")
-    );
-    setNewList(
-      list.filter((item) => {
-        return list.indexOf(item) !== key;
-      })
-    );
-  };
-
-  const deleteTask = (e, alist) => {
-    const key = Number(
-      e.target.getAttribute("b-key")
-    );
-
-    setNewList(
-      alist.map((item) => {
-        if (item?.display === "yes") {
-          item.detail.splice(key, 1);
-        }
-        return item;
-      })
-    );
+  const addTaskIcon = function (item) {
+    if (item.name === "My Day List") {
+      return <i class="ri-sun-line"></i>;
+    } else if (item.name === "Important List") {
+      return <i class="ri-star-line"></i>;
+    } else if (item.name === "Long Plan") {
+      return <i class="ri-calendar-2-line"></i>;
+    } else if (item.name === "Tasks") {
+      return <i class="ri-list-check"></i>;
+    } else {
+      return <i class="ri-menu-add-fill"></i>;
+    }
   };
 
   return (
@@ -294,8 +284,8 @@ const Home = () => {
                   clas="todo--type"
                   item={item}
                   newList={newList}
-                  func1={activeList}
-                  func2={assignTask}
+                  activeListFunction={activeList}
+                  assignTaskFunction={assignTask}
                 />
               ))}
             </div>
@@ -309,9 +299,9 @@ const Home = () => {
                   clas="task--added"
                   item={item}
                   newList={newList}
-                  func1={activeList}
-                  func2={assignTask}
-                  func3={deleteList}
+                  activeListFunction={activeList}
+                  assignTaskFunction={assignTask}
+                  deleteListFunction={deleteList}
                 />
               ))}
             </div>
@@ -327,7 +317,9 @@ const Home = () => {
                     placeholder="New List"
                     className="new-list-input"
                     onChange={(e) =>
-                      setMessage(e.target.value)
+                      setUserInputName(
+                        e.target.value
+                      )
                     }
                     ref={removeFocus}
                   />
@@ -338,7 +330,7 @@ const Home = () => {
                       createNewList(
                         e,
                         newList,
-                        message,
+                        userInputName,
                         removeFocus
                       )
                     }
@@ -354,11 +346,12 @@ const Home = () => {
         {/** detail */}
         <section class="details">
           <h2 class="task--title">
-            {value.icon} {value.name}
+            {addTaskIcon(liveList)}{" "}
+            {liveList.name}
           </h2>
           <div class="tasks--container">
             <div class="task--undone">
-              {value.detail.length === 0 ? (
+              {liveList.detail.length === 0 ? (
                 <p
                   style={{
                     textAlign: "center",
@@ -371,14 +364,16 @@ const Home = () => {
                   day
                 </p>
               ) : (
-                value?.detail?.map((d) => (
+                liveList?.detail?.map((d) => (
                   <Task
                     detail={d}
-                    datefunc={stDate}
-                    parent={value.detail}
+                    datefunc={setDisplayDate}
+                    parent={liveList.detail}
                     delFunc={deleteTask}
                     list={newList}
-                    key={value.detail.indexOf(d)}
+                    key={liveList.detail.indexOf(
+                      d
+                    )}
                   />
                 ))
               )}
@@ -400,7 +395,7 @@ const Home = () => {
                 name=""
                 id=""
                 className="newtask--date"
-                defaultValue={scur}
+                defaultValue={newDateStr}
                 ref={dateRef}
               />
               <button
