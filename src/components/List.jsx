@@ -32,10 +32,7 @@ const List = (props) => {
         props.assignTaskFunction(props.newList);
       }}
     >
-      <div>
-        {addListIcon(props.item)}{" "}
-        {props.item.name}
-      </div>
+      {addListIcon(props.item)} {props.item.name}
       <i
         class="ri-delete-bin-6-line del__btn"
         onClick={() => {
