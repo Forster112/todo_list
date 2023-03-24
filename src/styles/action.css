@@ -61,7 +61,8 @@
 }
 
 .added--task {
-  height: 20%;
+  box-sizing: border-box;
+  height: 22%;
   overflow-y: auto;
   overflow-x: hidden;
   margin-bottom: 3rem;
@@ -70,11 +71,11 @@
 .added--task .task--added {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 18px;
   height: 50px;
   padding: 0 0.5rem;
-  transition: 0.1s;
-  width: 100%;
+  width: 95%;
 }
 
 .added--task .task--added i {
@@ -91,7 +92,6 @@
   cursor: pointer;
   color: #f68084;
   font-size: 1.2rem;
-  right: 20px;
 }
 
 .added--task .task--added .prompt{
@@ -123,13 +123,13 @@
 }
 
 .new-n-settings {
-  position: absolute;
-  bottom: 40px;
+  position: fixed;
+  bottom: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0;
-  width: 80%;
+  width: 23%;
 }
 
 .new--list {

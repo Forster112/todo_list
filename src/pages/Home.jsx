@@ -293,17 +293,25 @@ const Home = () => {
             <div className="line line2"></div>
 
             <div className="added--task">
-              {addedList.map((item) => (
-                <List
-                  key={item.id}
-                  clas="task--added"
-                  item={item}
-                  newList={newList}
-                  activeListFunction={activeList}
-                  assignTaskFunction={assignTask}
-                  deleteListFunction={deleteList}
-                />
-              ))}
+              <div>
+                {addedList.map((item) => (
+                  <List
+                    key={item.id}
+                    clas="task--added"
+                    item={item}
+                    newList={newList}
+                    activeListFunction={
+                      activeList
+                    }
+                    assignTaskFunction={
+                      assignTask
+                    }
+                    deleteListFunction={
+                      deleteList
+                    }
+                  />
+                ))}
+              </div>
             </div>
 
             <div className="new-n-settings">
