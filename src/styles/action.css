@@ -243,6 +243,10 @@
   .username--email p {
     font-size: 7.8px;
   }
+
+  .username--email .username{
+    font-size: 4px;
+  }
 }
 
 @media only screen and (max-width: 375px) {
