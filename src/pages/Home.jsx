@@ -277,7 +277,9 @@ const Home = () => {
               </div>
             </div>
             <div className="line"></div>
-            <div className="list--type">
+            <div
+              className="list--type"
+            >
               {defaultList.map((item) => (
                 <List
                   key={item.id}
