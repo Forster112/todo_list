@@ -241,11 +241,15 @@
 
 @media only screen and (max-width: 430px) {
   .username--nickname p {
-    font-size: 8px;
+    font-size: 14px;
   }
 
   .username--nickname .username{
-    font-size: 6.5px;
+    font-size: 12px;
+  }
+
+  .list--type .todo--type{
+    font-size: 15px;
   }
 }
 
