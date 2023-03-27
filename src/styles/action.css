@@ -241,11 +241,11 @@
 
 @media only screen and (max-width: 430px) {
   .username--nickname p {
-    font-size: 7.8px;
+    font-size: 8px;
   }
 
   .username--nickname .username{
-    font-size: 4px;
+    font-size: 6.5px;
   }
 }
 
